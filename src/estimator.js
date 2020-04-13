@@ -11,8 +11,8 @@ const covid19ImpactEstimator = (data) => {
 
     const currentlyInfected = Math.trunc(reportedCases * 10);
 
-    if (periodType === 'months') timeToElapse = Math.trunc(timeToElapse * 30);
-    if (periodType === 'weeks') timeToElapse = Math.trunc(timeToElapse * 7);
+    if (periodType === 'months') timeToElapse *= 30;
+    if (periodType === 'weeks') timeToElapse *= 7;
 
     const powerFactor = Math.trunc(timeToElapse / 3);
 
@@ -50,8 +50,8 @@ const covid19ImpactEstimator = (data) => {
 
     const currentlyInfected = Math.trunc(reportedCases * 50);
 
-    if (periodType === 'months') timeToElapse = Math.trunc(timeToElapse * 30);
-    if (periodType === 'weeks') timeToElapse = Math.trunc(timeToElapse * 7);
+    if (periodType === 'months') timeToElapse *= 30;
+    if (periodType === 'weeks') timeToElapse *= 7;
 
     const powerFactor = Math.trunc(timeToElapse / 3);
 
