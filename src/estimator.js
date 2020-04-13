@@ -16,11 +16,11 @@ const getImpact = (value) => {
 
   const powerFactor = Math.trunc(timeToElapse / 3);
 
-  const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** powerFactor));
-  const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
+  const infectionsByRequestedTime = currentlyInfected * (2 ** powerFactor);
+  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
 
-  const availableBeds = Math.trunc(0.35 * totalHospitalBeds);
-  const hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeCasesByRequestedTime);
+  const availableBeds = 0.35 * totalHospitalBeds;
+  const hospitalBedsByRequestedTime = availableBeds - severeCasesByRequestedTime;
 
   const casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   const casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
@@ -31,8 +31,8 @@ const getImpact = (value) => {
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime,
+    severeCasesByRequestedTime: Math.trunc(severeCasesByRequestedTime),
+    hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTime),
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
     dollarsInFlight
@@ -55,8 +55,8 @@ const getSevereImpact = (value) => {
 
   const powerFactor = Math.trunc(timeToElapse / 3);
 
-  const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** powerFactor));
-  const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
+  const infectionsByRequestedTime = currentlyInfected * (2 ** powerFactor);
+  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
 
   const availableBeds = Math.trunc(0.35 * totalHospitalBeds);
   const hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeCasesByRequestedTime);
@@ -70,8 +70,8 @@ const getSevereImpact = (value) => {
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime,
+    severeCasesByRequestedTime: Math.trunc(severeCasesByRequestedTime),
+    hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTime),
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
     dollarsInFlight
