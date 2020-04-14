@@ -31,7 +31,7 @@ const getImpact = (value) => {
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severeCasesByRequestedTime: Math.ceil(severeCasesByRequestedTime),
+    severeCasesByRequestedTime: Math.trunc(severeCasesByRequestedTime),
     hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTime),
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
@@ -58,8 +58,8 @@ const getSevereImpact = (value) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** powerFactor);
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
 
-  const availableBeds = Math.trunc(0.35 * totalHospitalBeds);
-  const hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeCasesByRequestedTime);
+  const availableBeds = 0.35 * totalHospitalBeds;
+  const hospitalBedsByRequestedTime = availableBeds - severeCasesByRequestedTime;
 
   const casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   const casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
@@ -70,7 +70,7 @@ const getSevereImpact = (value) => {
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severeCasesByRequestedTime: Math.ceil(severeCasesByRequestedTime),
+    severeCasesByRequestedTime: Math.trunc(severeCasesByRequestedTime),
     hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTime),
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
